@@ -29,6 +29,7 @@ RUN \
  echo "Preparing to install Cubbit"; \
  download_folder=$(echo $HOME/cubbit_download); \
  config_path=$(echo $HOME/cubbit_cache); \
+ touch -a "$config_path/cubbit_version.txt"; \
  previous_version=$(cat "$config_path/cubbit_version.txt")
 
 RUN \
