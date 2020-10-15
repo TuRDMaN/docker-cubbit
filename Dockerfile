@@ -38,7 +38,7 @@ RUN \
  echo "[1] Check for cubbit version."; \
  if test -f "$download_folder/$previous_version"; \
  then echo "[2] Running $previous_version that already exists."; \
- 	$download_folder/$previous_version --no-sandbox && \
+ 	$download_folder/$previous_version --no-sandbox; \
  else echo "[2] Downloading last version name."; \
  	source=$(curl 'https://get.cubbit.io/desktop/linux/latest-linux.yml?script=linux&version=0.0.1'); \
  	exec_name=$(echo "$source" | grep 'url' | awk 'BEGIN { ORS=" " }; {print $3}'|tr -d '[:space:]'); \
@@ -48,7 +48,7 @@ RUN \
         	mkdir -p $config_path; \
         	echo "$exec_name" > "$config_path/cubbit_version.txt"; \
         	echo "[5] Running $exec_name."; \
-        	$download_folder/$exec_name --no-sandbox && \
+        	$download_folder/$exec_name --no-sandbox; \
  	else echo "[2] Error $exec_name does not exists in $download_folder."; \
  	fi; \
  fi
@@ -62,3 +62,4 @@ COPY /root /
 # ports and volumes
 #EXPOSE 3389
 #VOLUME /config
+#VOLUME /data
