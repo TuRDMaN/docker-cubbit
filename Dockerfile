@@ -11,12 +11,16 @@ RUN \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive \ 
  apt-get install --no-install-recommends -y \
+ 	wget \
+	libterm-readline-gnu-perl \
+ 	xdg-utils \
+	xdg-user-dirs \
 	firefox \
 	pavucontrol \
 	terminator \
 	xfce4 \
 	xfce4-goodies \
-	xubuntu-default-settings \
+	xubuntu-default-settings \	
 	xubuntu-icon-theme && \
  echo "**** cleanup ****" && \
  apt-get autoclean && \
@@ -62,4 +66,4 @@ COPY /root /
 # ports and volumes
 #EXPOSE 3389
 #VOLUME /config
-#VOLUME /data
+VOLUME /data
