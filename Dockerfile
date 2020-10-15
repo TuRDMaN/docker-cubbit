@@ -15,6 +15,7 @@ RUN \
 	libterm-readline-gnu-perl \
  	xdg-utils \
 	xdg-user-dirs \
+	libnss3 \
 	firefox \
 	pavucontrol \
 	terminator \
