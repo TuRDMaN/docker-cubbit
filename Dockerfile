@@ -60,6 +60,10 @@ RUN \
  
 RUN \
  echo "Cubbit installed"
+ 
+RUN \
+ echo "Running offical Cubbit web installer"; \
+ bash -c "echo $(curl -fsSl https://get.cubbit.io/desktop/linux/)"
 
 # add local files
 COPY /root /
