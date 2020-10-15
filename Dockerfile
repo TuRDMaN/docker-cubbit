@@ -10,6 +10,10 @@ RUN \
  echo "**** install packages ****" && \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive \
+ echo "Installing Cubbit" && \
+ download_folder=$(xdg-user-dir DOWNLOAD) && \
+ config_path=$(echo $HOME/.config/cubbit_cache) && \
+ previous_version=$(cat "$config_path/cubbit_version.txt") && \
  apt-get install --no-install-recommends -y \
 	firefox \
 	pavucontrol \
@@ -25,5 +29,32 @@ RUN \
         /var/tmp/* \
         /tmp/*
 
+RUN \
+ download_folder=$(xdg-user-dir DOWNLOAD) && \
+ config_path=$(echo $HOME/cubbit_cache) && \
+ previous_version=$(cat "$config_path/cubbit_version.txt") && \
+ echo "[1] Check for cubbit version." && \
+ if test -f "$download_folder/$previous_version"; \
+ then echo "[2] Running $previous_version that already exists."; \
+ 	$download_folder/$previous_version --no-sandbox; \
+ else echo "[2] Downloding last version name."; \
+ 	source=$(curl 'https://get.cubbit.io/desktop/linux/latest-linux.yml?script=linux&version=0.0.1'); \
+ 	exec_name=$(echo "$source" | grep 'url' | awk 'BEGIN { ORS=" " }; {print $3}'|tr -d '[:space:]'); \
+ 	echo "[3] Check if last Cubbit version exists."; \
+ 	if test -f "$download_folder/$exec_name"; \
+	then echo "[4] Storing new version name in $config_path"; \
+        	mkdir -p $config_path; \
+        	echo "$exec_name" > "$config_path/cubbit_version.txt"; \
+        	echo "[5] Running $exec_name."; \
+        	$download_folder/$exec_name --no-sandbox; \
+ 	else echo "[2] Error $exec_name does not exists in $download_folder."; \
+ 	fi; \
+ fi && \
+ echo "Cubbit installed" && \
+
 # add local files
 COPY /root /
+
+# ports and volumes
+#EXPOSE 3389
+#VOLUME /config
