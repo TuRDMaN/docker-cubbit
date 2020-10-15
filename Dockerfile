@@ -30,7 +30,7 @@ RUN \
         /tmp/*
 
 RUN \
- download_folder=$(xdg-user-dir DOWNLOAD) && \
+ download_folder=$(echo $HOME/cubbit_download) && \
  config_path=$(echo $HOME/cubbit_cache) && \
  previous_version=$(cat "$config_path/cubbit_version.txt") && \
  echo "[1] Check for cubbit version." && \
@@ -50,7 +50,7 @@ RUN \
  	else echo "[2] Error $exec_name does not exists in $download_folder."; \
  	fi; \
  fi && \
- echo "Cubbit installed" && \
+ echo "Cubbit installed"
 
 # add local files
 COPY /root /
