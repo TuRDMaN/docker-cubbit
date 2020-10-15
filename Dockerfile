@@ -9,11 +9,7 @@ LABEL maintainer="thelamer"
 RUN \
  echo "**** install packages ****" && \
  apt-get update && \
- DEBIAN_FRONTEND=noninteractive \
- echo "Installing Cubbit" && \
- download_folder=$(xdg-user-dir DOWNLOAD) && \
- config_path=$(echo $HOME/.config/cubbit_cache) && \
- previous_version=$(cat "$config_path/cubbit_version.txt") && \
+ DEBIAN_FRONTEND=noninteractive \ 
  apt-get install --no-install-recommends -y \
 	firefox \
 	pavucontrol \
@@ -30,6 +26,7 @@ RUN \
         /tmp/*
 
 RUN \
+ echo "Installing Cubbit" && \
  download_folder=$(echo $HOME/cubbit_download) && \
  config_path=$(echo $HOME/cubbit_cache) && \
  previous_version=$(cat "$config_path/cubbit_version.txt") && \
