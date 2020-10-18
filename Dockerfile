@@ -72,14 +72,14 @@ ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
 RUN \
  echo "Downloading Cubbit Desktop"; \ 
- wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
- #wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "$DOWNDIR/$RUNFILE"
+ #wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
+ wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "/$RUNFILE"
 
 RUN mv $RUNFILE $DOWNDIR/
 
 RUN \
- echo "Starting Cubbit Desktop"; \ 
- bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 30"
+ echo "Starting Cubbit Desktop"; \
+ bash -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
  #bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 5 && tail -F /dev/null"
 
 # ports and volumes
