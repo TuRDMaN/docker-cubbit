@@ -76,8 +76,9 @@ RUN \
  wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
 
 RUN \
- echo "Starting Cubbit Desktop"; \
- $DOWNDIR/$RUNFILE --appimage-extract-and-run
+ echo "Starting Cubbit Desktop"; \ 
+ bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 30"
+ #bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 5 && tail -F /dev/null"
 
 # ports and volumes
 #EXPOSE 3389
