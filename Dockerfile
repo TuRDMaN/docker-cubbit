@@ -65,13 +65,18 @@ RUN \
 COPY /root /
 
 RUN \
+ DOWNDIR="/config/Downloads"; \
+ RUNFILE="Cubbit-7.2.2.AppImage"; \
+ mkdir -p $DOWNDIR
+
+RUN \
  echo "Downloading Cubbit Desktop"; \
- cd /config/Downloads; \
- wget 'https://get.cubbit.io/desktop/linux/Cubbit-7.2.2.AppImage' \
+ cd $DOWNDIR; \
+ wget 'https://get.cubbit.io/desktop/linux/$RUNFILE'
 
 RUN \
  echo "Starting Cubbit Desktop"; \
- /config/Downloads/Cubbit-7.2.2.AppImage --appimage-extract-and-run
+ $DOWNDIR/$RUNFILE --appimage-extract-and-run
 
 # ports and volumes
 #EXPOSE 3389
