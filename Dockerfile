@@ -64,16 +64,15 @@ RUN \
 # add local files
 COPY /root /
 
-ARG DOWNDIR="/config/Downloads"
+ARG DOWNDIR="~"
 ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
-RUN \
- mkdir -p $DOWNDIR
+#RUN \
+# mkdir -p $DOWNDIR
 
 RUN \
- echo "Downloading Cubbit Desktop"; \
- cd $DOWNDIR; \
- wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
+ echo "Downloading Cubbit Desktop"; \ 
+ wget "https://get.cubbit.io/desktop/linux/$RUNFILE -O $DOWNDIR/$RUNFILE"
 
 RUN \
  echo "Starting Cubbit Desktop"; \ 
