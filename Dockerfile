@@ -77,6 +77,8 @@ RUN \
 
 #RUN mv $RUNFILE $DOWNDIR/
 
+RUN sudo chmod a+x /$RUNFILE
+
 RUN \
  echo "Starting Cubbit Desktop"; \
  bash -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
