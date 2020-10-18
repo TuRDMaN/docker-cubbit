@@ -72,7 +72,7 @@ RUN \
 RUN \
  echo "Downloading Cubbit Desktop"; \
  cd $DOWNDIR; \
- wget 'https://get.cubbit.io/desktop/linux/$RUNFILE'
+ wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
 
 RUN \
  echo "Starting Cubbit Desktop"; \
