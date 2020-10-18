@@ -81,7 +81,9 @@ RUN sudo chmod a+x /$RUNFILE
 
 RUN \
  echo "Starting Cubbit Desktop"; \
- bash -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
+ su - abc -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
+ #bash -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
+ 
  #bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 5 && tail -F /dev/null"
 
 # ports and volumes
