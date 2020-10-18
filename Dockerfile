@@ -75,7 +75,7 @@ RUN \
  #wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
  wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "/$RUNFILE"
 
-RUN mv $RUNFILE $DOWNDIR/
+#RUN mv $RUNFILE $DOWNDIR/
 
 RUN \
  echo "Starting Cubbit Desktop"; \
