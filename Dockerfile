@@ -68,7 +68,11 @@ RUN \
 # add local files
 COPY /root /
 
+RUN \
+ echo "Starting Cubbit Hatch"; \
+ /config/Downloads/Cubbit-*.AppImage --appimage-extract-and-run
+
 # ports and volumes
 #EXPOSE 3389
 #VOLUME /config
-VOLUME /data
+#VOLUME /data
