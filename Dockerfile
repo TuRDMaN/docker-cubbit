@@ -72,10 +72,11 @@ ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
 RUN \
  echo "Downloading Cubbit Desktop"; \ 
- #wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
- wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "/$RUNFILE"
+ wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
+ #wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "/$RUNFILE"
 
 #RUN mv $RUNFILE $DOWNDIR/
+RUN mv $RUNFILE /$RUNFILE
 
 RUN \
  echo "Starting Cubbit Desktop"; \
