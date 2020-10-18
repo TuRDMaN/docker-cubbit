@@ -64,8 +64,8 @@ RUN \
 # add local files
 COPY /root /
 
-ARG DOWNDIR="/config/Downloads"; \
-ARG RUNFILE="Cubbit-7.2.2.AppImage"; \
+ARG DOWNDIR="/config/Downloads"
+ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
 RUN \
  mkdir -p $DOWNDIR
