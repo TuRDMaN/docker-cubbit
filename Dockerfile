@@ -39,14 +39,14 @@ ARG RUNFILE="Cubbit-7.2.2.AppImage"
 #RUN \
 # mkdir -p $DOWNDIR
 
+RUN \
+ wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' && \
+ sudo chmod a+x $RUNFILE
+
 USER abc
 
-RUN \
- wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "$DOWNDIR/$RUNFILE" && \
- sudo chmod a+x $DOWNDIR/$RUNFILE
- 
 ENTRYPOINT \
- /bin/bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run"
+ /bin/bash -c "/$RUNFILE --appimage-extract-and-run"
 
 #RUN mv $RUNFILE $DOWNDIR/
 
