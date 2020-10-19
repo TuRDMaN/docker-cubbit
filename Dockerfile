@@ -33,16 +33,19 @@ RUN \
 # add local files
 COPY /root /
 
-#ARG DOWNDIR="~"
-#ARG RUNFILE="Cubbit-7.2.2.AppImage"
+ARG DOWNDIR="/config/Downloads"
+ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
 #RUN \
 # mkdir -p $DOWNDIR
 
-#RUN \
-# echo "Downloading Cubbit Desktop"; \ 
-# wget "https://get.cubbit.io/desktop/linux/$RUNFILE"
- #wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "/$RUNFILE"
+USER abc
+
+RUN \
+ wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "$DOWNDIR/$RUNFILE" && \
+ 
+ENTRYPOINT \
+ /bin/bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run"
 
 #RUN mv $RUNFILE $DOWNDIR/
 
