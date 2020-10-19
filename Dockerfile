@@ -29,19 +29,19 @@ RUN \
         /var/lib/apt/lists/* \
         /var/tmp/* \
         /tmp/*
- 
-# add local files
-COPY /root /
 
 ARG DOWNDIR="/config/Downloads"
 ARG RUNFILE="Cubbit-7.2.2.AppImage"
 
-#RUN \
-# mkdir -p $DOWNDIR
-
 RUN \
  wget "https://get.cubbit.io/desktop/linux/$RUNFILE" -O "/$RUNFILE" && \
  sudo chmod a+x "/$RUNFILE"
+
+# add local files
+COPY /root /
+
+#RUN \
+# mkdir -p $DOWNDIR
 
 ##USER abc
 
