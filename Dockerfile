@@ -40,8 +40,8 @@ ARG RUNFILE="Cubbit-7.2.2.AppImage"
 # mkdir -p $DOWNDIR
 
 RUN \
- wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' && \
- sudo chmod a+x $RUNFILE
+ wget "https://get.cubbit.io/desktop/linux/$RUNFILE" -O "/$RUNFILE" && \
+ sudo chmod a+x "/$RUNFILE"
 
 USER abc
 
