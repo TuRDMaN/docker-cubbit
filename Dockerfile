@@ -43,6 +43,7 @@ USER abc
 
 RUN \
  wget 'https://get.cubbit.io/desktop/linux/$RUNFILE' -O "$DOWNDIR/$RUNFILE" && \
+ sudo chmod a+x $DOWNDIR/$RUNFILE
  
 ENTRYPOINT \
  /bin/bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run"
