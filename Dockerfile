@@ -30,35 +30,5 @@ RUN \
         /var/tmp/* \
         /tmp/*
 
-ARG DOWNDIR="/config/Downloads"
-ARG RUNFILE="Cubbit-7.2.2.AppImage"
-
-RUN \
- wget "https://get.cubbit.io/desktop/linux/$RUNFILE" -O "/$RUNFILE" && \
- sudo chmod a+x "/$RUNFILE"
-
 # add local files
 COPY /root /
-
-#RUN \
-# mkdir -p $DOWNDIR
-
-##USER abc
-
-##ENTRYPOINT /bin/bash -c "/$RUNFILE --appimage-extract-and-run"
-
-#RUN mv $RUNFILE $DOWNDIR/
-
-#RUN sudo chmod a+x /$RUNFILE
-
-#RUN echo "Starting Cubbit Desktop"
-
-#RUN su - abc -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
- #bash -c "/$RUNFILE --appimage-extract-and-run & sleep 30"
- 
- #bash -c "$DOWNDIR/$RUNFILE --appimage-extract-and-run & sleep 5 && tail -F /dev/null"
-
-# ports and volumes
-#EXPOSE 3389
-#VOLUME /config
-#VOLUME /data
