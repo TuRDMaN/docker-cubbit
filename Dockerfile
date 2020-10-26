@@ -8,8 +8,9 @@ LABEL maintainer="thelamer"
 
 RUN \
  echo "**** install packages ****" && \
+ curl -s https://packagecloud.io/install/repositories/immortal/immortal/script.deb.sh | sudo bash && \
  apt-get update && \
- DEBIAN_FRONTEND=noninteractive \ 
+ DEBIAN_FRONTEND=noninteractive && \ 
  apt-get install --no-install-recommends -y \
  	wget \
 	libterm-readline-gnu-perl \
@@ -22,7 +23,8 @@ RUN \
 	xfce4 \
 	xfce4-goodies \
 	xubuntu-default-settings \	
-	xubuntu-icon-theme && \
+	xubuntu-icon-theme \
+	immortal && \
  echo "**** cleanup ****" && \
  apt-get autoclean && \
  rm -rf \
